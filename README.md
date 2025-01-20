@@ -38,7 +38,7 @@ All elements that will be referenced in `app.js` will have an id. Read through `
 If you get stuck, write psuedocode and break the game's functionality and logic into smaller pieces.
 
 - [ ] The span with the id of `guess-message` should output whether the guess is too high, too low, if the player won, or if the player lost.
-- [ ] The span with the id of `current-guess` should output the guess that was just submitted.
+- [x] The span with the id of `current-guess` should output the guess that was just submitted.
 - [ ] The span with the id of `computer-guess` should output the guess that was randomly generated.
 - [ ] The span with the id of `guess-history` should output your guess history.
 - [ ] The "Submit Guess" button should be enabled at the beginning of the game, but when the game is over it should be disabled.
@@ -49,7 +49,7 @@ If you get stuck, write psuedocode and break the game's functionality and logic 
 ### Tips
 - Push a commit for each task completed. Include a meaningfull commit message.
 - Before the above, update the readme task list to track your progress. To do this, enter x between the brackets.
-- Get used to using your browser's developer tools now. For now, become familiar with: 
+- Get used to using your browser's developer tools now. For now, become familiar with:
     - Toggling between desktop mode and device emulation/responsive mode.
     - Using inspector mode to inspect elements.
 - If you get stuck, please remember that you have various resources available to you.

@@ -1,47 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="./css/style.css" />
-        <title>Introduction to JS: Final Project</title>
-    </head>
-    <body>
-        <main class="main">
-            <article class="game-container">
-                <h1 class="game-title">Guess the Number</h1>
-                <p class="game-message">
-                    Try to guess the computer's number within 3 tries!
-                </p>
-                <input
-                    class="number-input"
-                    type="number"
-                    name=""
-                    id="guess-input"
-                    placeholder="Enter Number"
-                />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Introduction to JS: Final Project</title>
+  </head>
+  <body>
+    <main class="main">
+      <article class="game-container">
+        <h1 class="game-title">Guess the Number</h1>
+        <p class="game-message">
+          Try to guess the computer's number within 3 tries!
+        </p>
+        <input
+          class="number-input"
+          type="number"
+          name=""
+          id="guess-input"
+          placeholder="Enter Number"
+        />
 
-                <div class="guess-container">
-                    <p class="text">Result: <span id="guess-message"></span></p>
-                    <p class="text">
-                        Your Guess: <span id="current-guess"></span>
-                    </p>
-                    <p class="text">
-                        Computer Guess: <span id="computer-guess"></span>
-                    </p>
-                    <p class="text">
-                        Guess History: <span id="guess-history"></span>
-                    </p>
-                </div>
+        <div class="guess-container">
+          <p class="text">Result: <span id="guess-message"></span></p>
+          <p class="text">Your Guess: <span id="current-guess"></span></p>
+          <p class="text">Computer Guess: <span id="computer-guess"></span></p>
+          <p class="text">Guess History: <span id="guess-history"></span></p>
+        </div>
 
-                <div class="btn-container">
-                    <button id="submit-btn" class="btn">Submit Guess</button>
-                    <button id="restart-btn" class="btn" disabled>
-                        Restart
-                    </button>
-                </div>
-            </article>
-        </main>
-        <script src="./js/app.js"></script>
-    </body>
+        <div class="btn-container">
+          <button id="submit-btn" class="btn">Submit Guess</button>
+          <button id="restart-btn" class="btn" disabled>Restart</button>
+        </div>
+      </article>
+    </main>
+    <script src="./js/app.js"></script>
+  </body>
 </html>
