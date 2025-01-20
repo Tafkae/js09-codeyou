@@ -12,16 +12,20 @@ const guessHistoryField = document.getElementById("guess-history");
 // variables
 let secret,
   guesses = 0,
-  currentGuess;
+  currentGuess,
+  guessMessage;
 let guessHistory = [];
 
 // initialize game values
 function initGame() {
   secret = generateSecretNumber();
   guesses = 0;
+  currentGuess = null;
+  guessMessage = "";
   guessInputField.value = "";
   submitBtn.disabled = false;
   restartBtn.disabled = true;
+  guessHistory = [];
 }
 initGame();
 
@@ -43,33 +47,59 @@ function getPlayerGuess() {
   return guess;
 }
 
-// check player guess agaisnt secret
+// check player guess against secret,
+// returns what behavior to do
 function compare(guess, secret) {
   if (guess === secret) {
-    return "correct";
-  } else if (guess < secret) {
-    return "too low";
+    return playerWin;
+  } else if (guesses >= 3) {
+    return playerLose;
+  } else if (guess > secret) {
+    return () => "too high";
   } else {
-    return "too high";
+    return () => "too low";
   }
 }
 
+// do this when game ends regardless of win or lose
+function gameOver() {
+  submitBtn.disabled = true;
+  restartBtn.disabled = false;
+}
+
 // do this if the player wins
-function playerWin() {}
+function playerWin() {
+  gameOver();
+  return "YOU'RE WINNER";
+}
 
 // do this if the player loses
-function playerLose() {}
+function playerLose() {
+  gameOver();
+  return "you get nothing! you LOSE! good DAY sir";
+}
 
 // make a guess
 function makeGuess() {
   currentGuess = getPlayerGuess();
   guesses++;
-
+  guessHistory.push([guesses, currentGuess]);
+  let doNext = compare(currentGuess, secret);
+  guessMessage = doNext();
 }
 
 function render() {
   currentGuessField.innerText = currentGuess;
   computerGuessField.innerText = secret;
+  guessMessageField.innerText = guessMessage;
+  guessHistoryField.innerHTML = (function (arr) {
+    let formattedHistory = `<ul class="guess-history">`;
+    for (let entry of arr) {
+      formattedHistory += `<li>Guess #${entry[0]}: ${entry[1]}</li>`;
+    }
+    formattedHistory += `</ul>`;
+    return formattedHistory;
+  })(guessHistory);
 }
 
 // === Event handlers ============
