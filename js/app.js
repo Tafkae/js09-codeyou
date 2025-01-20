@@ -60,9 +60,11 @@ function playerWin() {}
 // do this if the player loses
 function playerLose() {}
 
-function updateGame() {
+// make a guess
+function makeGuess() {
   currentGuess = getPlayerGuess();
-  restartBtn.disabled = false;
+  guesses++;
+
 }
 
 function render() {
@@ -73,7 +75,7 @@ function render() {
 // === Event handlers ============
 
 submitBtn.addEventListener("click", function () {
-  updateGame();
+  makeGuess();
   render();
 });
 
