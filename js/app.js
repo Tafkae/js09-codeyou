@@ -9,6 +9,22 @@ const currentGuessField = document.getElementById("current-guess");
 const computerGuessField = document.getElementById("computer-guess");
 const guessHistoryField = document.getElementById("guess-history");
 
+// variables
+let secret,
+  guesses = 0,
+  currentGuess;
+let guessHistory = [];
+
+// initialize game values
+function initGame() {
+  secret = generateSecretNumber();
+  guesses = 0;
+  guessInputField.value = "";
+  submitBtn.disabled = false;
+  restartBtn.disabled = true;
+}
+initGame();
+
 // computer generates an integer between 1 and 10.
 function generateSecretNumber() {
   return Math.floor(Math.random() * 10 + 1);
@@ -16,7 +32,15 @@ function generateSecretNumber() {
 
 // read user input from number field
 function getPlayerGuess() {
-  return guessInputField.value || 0;
+  let guess = parseInt(guessInputField.value);
+  if (guess < 1) {
+    guessInputField.value = 1;
+    return 1;
+  } else if (guess > 10) {
+    guessInputField.value = 10;
+    return 10;
+  }
+  return guess;
 }
 
 // check player guess agaisnt secret
@@ -36,24 +60,24 @@ function playerWin() {}
 // do this if the player loses
 function playerLose() {}
 
-// === main gameplay loop ======
-function play() {
-  let secret = generateSecretNumber();
+function updateGame() {
+  currentGuess = getPlayerGuess();
+  restartBtn.disabled = false;
 }
 
-// reset game to original state
-function restartGame() {}
-
 function render() {
-  currentGuessField.innerText = getPlayerGuess();
+  currentGuessField.innerText = currentGuess;
+  computerGuessField.innerText = secret;
 }
 
 // === Event handlers ============
 
 submitBtn.addEventListener("click", function () {
+  updateGame();
   render();
 });
 
 restartBtn.addEventListener("click", function () {
-  restartGame();
+  initGame();
+  render();
 });

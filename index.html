@@ -11,16 +11,20 @@
       <article class="game-container">
         <h1 class="game-title">Guess the Number</h1>
         <p class="game-message">
-          Try to guess the computer's number within 3 tries!
+          Try to guess the computer's number within 3 tries!<br />
+          (It's an integer between 1 and 10)
         </p>
-        <input
-          class="number-input"
-          type="number"
-          name=""
-          id="guess-input"
-          placeholder="Enter Number"
-        />
-
+        <label for="guess-input">Enter number here:
+          <input
+            class="number-input"
+            type="number"
+            name=""
+            id="guess-input"
+            placeholder="Enter Number"
+            min="1"
+            max="10"
+          />
+        </label>
         <div class="guess-container">
           <p class="text">Result: <span id="guess-message"></span></p>
           <p class="text">Your Guess: <span id="current-guess"></span></p>
